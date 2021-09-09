@@ -1,0 +1,17 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Helvetica", sans-serif;
+}
+
+#card-contents {
+  height: absolute;
+}
+
+#chart1 {
+  height: 30rem;
+}
+
+.div-container {
+  padding: 3rem 0 3rem 0;
+}

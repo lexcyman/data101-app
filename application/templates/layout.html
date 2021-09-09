@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="{{url_for('static', filename='main.css')}}" type="text/css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  {% if title %}
+    <title>{{title}}</title> 
+  {% else %}
+    <title>Ocean Plastic Pollution | Data Visualization</title>
+  {% endif %}
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="/">Ocean Plastic Pollution</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="/mismanaged-wastes">Mismanaged Wastes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/marine-plastic-wastes">Marine Plastic Wastes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/synthesis-of-data">Synthesis of Data</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav> <!--\END-->
+
+  <!-- MAIN CONTENT -->
+  <main>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-xm-12">
+          <div class="ml-auto mr-auto">
+            {% block content %}
+            {% endblock %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </main> <!--\END-->
+
+  <!-- FOOTER -->
+  <footer class="bg-light text-center text-lg-start">
+    <div class="container p-4">
+      <div class="row">
+        <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+          <h5>References</h5>
+          <p>Eriksen, M. (2014). Plastic Marine Pollution Global Dataset. Figshare. 
+            Retrieved from <a href="https://figshare.com/articles/dataset/Plastic_Marine_Pollution_Global_Dataset/1015289">
+              https://figshare.com/articles/dataset/Plastic_Marine_Pollution_Global_Dataset/1015289</a>
+          </p>
+          <p>
+            Gade, S. (2021). Global Plastic Pollution. Kaggle. Retrieved 
+            from <a href="https://www.kaggle.com/sohamgade/plastic-datasets?select=plastic-waste-per-capita.csv">
+              https://www.kaggle.com/sohamgade/plastic-datasets?select=plastic-waste-per-capita.csv</a>
+          </p>
+          <p>
+            Ritchie, H. (2021). Where does the plastic in our oceans come from? Our World in Data. 
+            Retrieved from <a href="https://ourworldindata.org/ocean-plastics">https://ourworldindata.org/ocean-plastics</a>
+          </p>
+        </div>
+        <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+          <h5>Created By</h5>
+          <p>Isaiah Dela Cruz, Patrick Jaspher Joya, Tristan Angelo Manalad, Alexandra Cyrielle Mangune, Enrico Miguel Portugal</p>
+          <p>DATA101 S11</p>
+        </div>
+      </div>
+    </div>
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+      © 2021 Copyright DATA101 S11 - Group 1
+    </div>
+  </footer>
+  <!--\END-->
+
+  <!-- SCRIPTS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<!-- Where do ocean plastic pollution come from? -->
+<div class="container div-container">
+  <div class="row row-cols-2">
+    <div class="col">
+      <h4>Where do ocean plastic pollution come from?</h4>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nec nulla quis 
+        risus vehicula mollis. Suspendisse volutpat dolor velit, nec lobortis turpis consequat 
+        vitae. Pellentesque vehicula posuere dui, sit amet venenatis nulla pulvinar sit amet. 
+        Cras ornare leo sit amet hendrerit tristique. Integer faucibus turpis nec magna 
+        sollicitudin pellentesque. Pellentesque quis libero metus. Sed dignissim arcu 
+        elementum suscipit lacinia.</p>
+        <p>Aliquam tincidunt nulla vel eros vehicula, sed suscipit dui convallis. Aenean lacus velit, 
+        cursus id laoreet at, semper eget massa. Quisque eget sodales quam, ut vulputate 
+        augue. Donec facilisis, eros posuere dapibus vehicula, lectus dolor placerat erat, 
+        id faucibus orci ipsum vitae mauris. Suspendisse potenti. Nam bibendum nulla 
+        imperdiet, aliquam ligula id, faucibus metus. Lorem ipsum dolor sit ame.</p>
+    </div>
+    <div class="col">
+      <img src="{{url_for('static', filename='plastic-bag.png')}}" class="img-fluid" alt="Plastic Bag Underwater">
+    </div>
+  </div>
+</div> <!--\END-->
+
+<hr class="container" />
+
+<!-- Global plastic production line graph -->
+<div class="container div-container">
+  <div class="row">
+    <h4>Global Plastic Production fom 1950 to 2015</h4>
+  </div>
+  <div class="row p-2">
+    <div class="m-auto">
+      <div id="card-contents">
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt illum 
+          inventore odit ipsa ex dolore ea eveniet nulla. Possimus voluptate ipsum 
+          eveniet neque quas ipsa non accusamus perspiciatis, explicabo magni provident, 
+          facere vitae rerum, tempora maiores eaque! Facilis dolores fugiat aperiam 
+          vitae ducimus explicabo illum temporibus, harum adipisci modi, saepe 
+          repudiandae laboriosam perspiciatis ullam sequi culpa minus quae? Rerum 
+          alias praesentium iusto officia fugiat adipisci nihil quisquam ut, 
+          dolorum reprehenderit possimus, ducimus ex explicabo odio earum. Reiciendis 
+          commodi illum consequuntur!
+        </p>
+        <div id="global-plastics-line" data-aos="zoom-in"></div>
+      </div>
+    </div>
+  </div>
+</div> <!--\END-->
+
+<!-- GET DATA FROM ROUTES.PY -->
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script>
+  var graph1 = {{ graph1JSON | safe }};
+  Plotly.plot('global-plastics-line', graph1, {});
+</script> <!--\END-->
+{% endblock %}
