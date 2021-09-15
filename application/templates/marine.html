@@ -2,13 +2,83 @@
 
 {% block content %}
 
-<h4>Marine plastic wastes!</h4>
-<p>
-  Apart from the plastic composition, we can also visualize the plastic in terms of its weight per kilometer square. 
+<!-- Marine Plastic Wastes -->
+<div class="container div-container" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
+    <div class="row">
+      <h4>Plastic Particles per Kilometer Squared</h4>
+    </div>
+    <div class="row p-2">
+      <div class="m-auto">
+        <div id="card-contents">
+          <p>
+            Apart from the plastic composition, we can also visualize the plastic in terms of its weight per kilometer square. 
   We must have an idea of the weight of the plastic thrown into our waters. The plastics we see on the surface may only be the 
-  top of a thick layer of plastic under the water. The weight helps us see beyond the top layer and understand how 
+  top of a thick layer of plastic under the water.
+          </p>
+          <div id="plastic-particles" data-aos="zoom-in"></div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <h4>Weight of Plastic Wastes in Grams</h4>
+    </div>
+    <div class="row div-container">
+      <p>
+        The weight helps us see beyond the top layer and understand how 
   concentrated or even packed our waters are with plastic. We often think that we are improving since we see less plastic, 
   but these metrics make it clear that we cannot simply judge something by what we see. If we unravel what lies underneath 
   the surface, we realize that there is still much to do.
-</p>
+      </p>
+      <div id="plastic-wastes" data-aos="zoom-in"></div>
+    </div>
+  </div> <!--\END-->
+  
+  <hr class="container" />
+
+  </div> <!--\END-->
+  
+  <!-- Get data from routes.py -->
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script>
+    var plastic_particles = {{ plastic_particles_JSON | safe }};
+    var plastic_wastes = {{ plastic_waste_grams_JSON | safe }};
+  
+    // default plot of mismanaged wastes is the 2010 data
+    Plotly.plot('plastic-particles', plastic_particles, {});
+    // default plot of emitted wastes is the 2010 data
+    Plotly.plot('plastic-wastes', plastic_wastes, {});
+    /*function changeMap(event) {
+      var div12010 = document.getElementById('mismanaged-map-2010');
+      var div12019 = document.getElementById('mismanaged-map-2019');
+      var div22010 = document.getElementById('plastic-wastes-map-2010');
+      var div22019 = document.getElementById('plastic-wastes-map-2019');
+  
+      if (event.target.value === "2010-mismanaged") {
+        div12019.style.display = 'none';
+        div12010.style.display = 'block';
+        Plotly.plot('mismanaged-map-2010', countries1_2010_Map, {});
+      }
+      else if (event.target.value === "2019-mismanaged") {
+        div12010.style.display = 'none';
+        div12019.style.display = 'block';
+        Plotly.plot('mismanaged-map-2019', countries1_2019_Map, {});
+      }
+      if (event.target.value === "2010-emitted") {
+        div22019.style.display = 'none';
+        div22010.style.display = 'block';
+        Plotly.plot('plastic-wastes-map-2010', countries2_2010_Map, {});
+      }
+      else if (event.target.value === "2019-emitted") {
+        div22010.style.display = 'none';
+        div22019.style.display = 'block';
+        Plotly.plot('plastic-wastes-map-2019', countries2_2019_Map, {});
+      }
+    }
+    
+    Plotly.plot('mismanaged-continents-2019', continents1Bar, {});
+    Plotly.plot('plastic-wastes-continents-2019', continents2Bar, {});
+    */
+  </script> <!--\END-->
+  
+
 {% endblock %}
