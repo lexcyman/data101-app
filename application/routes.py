@@ -136,8 +136,7 @@ def get_mismanaged_wastes():
 def get_marine_plastic_wastes():
   plastic_marine_df = pd.read_csv('data/plastic-marine-pollution-global-dataset.csv')
 
-  plastic_particles_df = plastic_marine_df[["CD1","CD2","CD3","CD4"]]
-  plastic_particles_df = plastic_particles_df.astype(str)
+  plastic_particles_df = plastic_marine_df[["Latitude","Longitude","CD1","CD2","CD3","CD4"]]
   plastic_particles_df["CD1"]=plastic_particles_df["CD1"].str.replace(',','')
   plastic_particles_df["CD2"]=plastic_particles_df["CD2"].str.replace(',','')
   plastic_particles_df["CD3"]=plastic_particles_df["CD3"].str.replace(',','')
@@ -146,7 +145,7 @@ def get_marine_plastic_wastes():
   #plastic_particles_df(np.nan,0,regex=True)
   plastic_particles_df = plastic_particles_df.astype(float)
 
-  plastic_waste_grams_df = plastic_marine_df[["WD1","WD2","WD3","WD4"]]
+  plastic_waste_grams_df = plastic_marine_df[["Latitude","Longitude","WD1","WD2","WD3","WD4"]]
   plastic_waste_grams_df = plastic_waste_grams_df.astype(str)
   plastic_waste_grams_df["WD1"]=plastic_waste_grams_df["WD1"].str.replace(',','')
   plastic_waste_grams_df["WD2"]=plastic_waste_grams_df["WD2"].str.replace(',','')
@@ -156,9 +155,10 @@ def get_marine_plastic_wastes():
   #plastic_waste_grams_df(np.nan,0,regex=True)
   plastic_waste_grams_df = plastic_waste_grams_df.astype(float)
 
-  plastic_particles_fig = px.scatter(plastic_particles_df)
+  #plastic_particles_fig = px.scatter(plastic_particles_df)
+  plastic_particles_fig = px.scatter_mapbox(plastic_particles_df,lat="Latitude",lon="Longitude")
 
-  plastic_waste_grams_fig = px.scatter(plastic_waste_grams_df)
+  plastic_waste_grams_fig = px.scatter_mapbox(plastic_waste_grams_df,lat="Latitude",lon="Longitude")
 
   plastic_particles_JSON = json.dumps(plastic_particles_fig, cls = plotly.utils.PlotlyJSONEncoder)
   plastic_waste_grams_JSON = json.dumps(plastic_waste_grams_fig, cls = plotly.utils.PlotlyJSONEncoder)
